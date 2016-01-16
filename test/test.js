@@ -2,7 +2,7 @@
 require('should');
 var proxyquire = require('proxyquire');
 var util = require('util');
-var EventEmitter = require('events');
+var EventEmitter = require('events').EventEmitter;
 
 function CbStub() {
   function StubEmitter() {

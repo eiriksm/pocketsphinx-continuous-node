@@ -27,17 +27,30 @@ var ps = new Psc({
   setId: '1337'  // A "set id". See explanation below.
   verbose: false // Will give you a whole lot of debug output in your console.
 });
+```
 
+This will return a new instance of pocketsphinx-continuous that you can listen to different events on:
+
+### Events
+
+#### data
+This is called whenever a sentence or word is recognized and completed.
+```js
 ps.on('data', function(data) {
-  // This is called whenever a sentence or word is recognized and completed.
 });
+```
 
+#### debug
+This will only be called if `verbose` is set to `true`. It will give you all output from stderr from the parent process.
+```js
 ps.on('debug', function(data) {
-  // This will only be called if `verbose` is set to `true`
 });
+```
 
+#### error
+Something went wrong with the underlying pocketsphinx_continuous process. It was either closed or terminated. The `err` parameter might be an exit code or an error object.
+```js
 ps.on('error', function(err) {
-  // Something went wrong with the underlying pocketsphinx_continuous process.
 });
 ```
 

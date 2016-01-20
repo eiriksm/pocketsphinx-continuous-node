@@ -25,7 +25,7 @@ Since pocketsphinx_continuous is able to use dictionaries as arguments, you can 
 var Psc = require('pocketsphinx-continuous');
 var ps = new Psc({
   setId: '1337'  // A "set id". See explanation below.
-  verbose: false // Will give you a whole lot of debug output in your console.
+  verbose: false // Setting this to true will give you a whole lot of debug output in your console.
 });
 ```
 
@@ -53,6 +53,11 @@ Something went wrong with the underlying pocketsphinx_continuous process. It was
 ps.on('error', function(err) {
 });
 ```
+
+## What is a "set id"
+For the sake of simplicity, I have used the so-called [lmtool](http://www.speech.cs.cmu.edu/tools/lmtool-new.html) to generate a dictionary and language model. This will give you a download consisting of a couple of files, and they are usually named in a specific way. For example if your submission generated a "set id" of 1337, then the files inside the downloaded archive would be named (among other) 1337.lm and 1337.dic. These are the ones we use. So if you have downloaded a different dictionary and/or language model, you can rename them to an arbitrary string (preferrably both of them the same) and use that as the `setId` config parameter.
+
+When you use this module, make sure these files are in the working directory.
 
 ## Licence
 MIT

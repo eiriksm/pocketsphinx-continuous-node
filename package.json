@@ -1,5 +1,5 @@
 {
-  "name": "pocketsphinx-continuous-node",
+  "name": "pocketsphinx-continuous",
   "version": "1.0.0",
   "description": "A node wrapper around pocketsphinx_continuous",
   "main": "index.js",

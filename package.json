@@ -4,7 +4,7 @@
   "description": "A node wrapper around pocketsphinx_continuous",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "npm run lint && mocha",
     "coverage": "istanbul cover -- _mocha",
     "lint": "eslint ."
   },
@@ -20,8 +20,9 @@
   "homepage": "https://github.com/eiriksm/pocketsphinx-continuous-node#readme",
   "devDependencies": {
     "eslint": "^1.10.3",
-    "istanbul": "^0.4.1",
+    "istanbul": "^0.4.2",
     "mocha": "^2.3.4",
-    "should": "^8.1.0"
+    "proxyquire": "^1.7.3",
+    "should": "^8.1.1"
   }
 }

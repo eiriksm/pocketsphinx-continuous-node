@@ -7,19 +7,23 @@ module.exports = function(config, callback) {
     '-inmic',
     'yes',
     '-lm',
-    setId  + '.lm',
+    setId + '.lm',
     '-dict',
     setId + '.dic'
   ]);
   pc.stdout.on('data', function(data) {
-    var data = data.toString().trim();
-    if (data) {
-      callback(null, data);
+    var output = data.toString().trim();
+    if (output) {
+      callback(null, output);
     }
   });
   pc.stderr.on('data', function(data) {
+    var output = data.toString().trim();
+    if (config.verbose && output) {
+      callback(null, data);
+    }
   });
   pc.on('close', function(code) {
     callback(code);
   });
-}
+};

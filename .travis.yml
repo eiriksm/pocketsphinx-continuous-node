@@ -3,3 +3,6 @@ node_js:
   - "0.10"
   - "4"
 sudo: false
+after_script:
+  - npm run coverage
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js

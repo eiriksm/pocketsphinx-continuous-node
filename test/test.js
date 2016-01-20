@@ -35,13 +35,15 @@ describe('Complete test suite', function() {
   });
   it('Should emit the expected data', function(done) {
     var tc = new CbStub();
-    proxyquire('..', {
+    var Psc = proxyquire('..', {
       'child_process': tc.obj
-    })({
-      setId: Math.random()
-    }, function(err, d) {
+    });
+    var psc = new Psc({
+      setId: 'testset'
+    })
+    psc.on('data', function(d) {
       d.should.equal('TEST');
-      done(err);
+      done();
     });
     // Write a couple of events.
     tc.streams.out.emit('data', '');
@@ -49,17 +51,24 @@ describe('Complete test suite', function() {
   });
   it('Should error and such in expected manner', function(done) {
     var tc = new CbStub();
-    proxyquire('..', {
+    var Psc = proxyquire('..', {
       'child_process': tc.obj
-    })({
+    });
+    var psc = new Psc({
       setId: Math.random(),
       verbose: true
-    }, function(err, d) {
-      if (d) {
-        d.should.equal('TEST');
-      }
-      if (err) {
+    });
+    psc.on('data', function(d) {
+      d.should.equal('TEST');
+    });
+    var count = 0;
+    psc.on('error', function(err) {
+      if (count == 0) {
         err.should.equal(42);
+        count++;
+      }
+      else {
+        err.should.equal(43);
         done();
       }
     });
@@ -67,5 +76,6 @@ describe('Complete test suite', function() {
     tc.streams.err.emit('data', '');
     tc.streams.err.emit('data', 'TEST');
     tc.obj.emit('close', 42);
+    tc.obj.emit('error', 43);
   });
 });

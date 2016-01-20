@@ -1,5 +1,5 @@
 {
-  "name": "pocketsphinx-continuous-node",
+  "name": "pocketsphinx-continuous",
   "version": "1.0.0",
   "description": "A node wrapper around pocketsphinx_continuous",
   "main": "index.js",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/eiriksm/pocketsphinx-continuous-node#readme",
   "devDependencies": {
+    "coveralls": "^2.11.6",
     "eslint": "^1.10.3",
     "istanbul": "^0.4.2",
     "mocha": "^2.3.4",

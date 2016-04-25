@@ -58,8 +58,16 @@ describe('Complete test suite', function() {
       setId: Math.random(),
       verbose: true
     });
+    var testCalled = false;
     psc.on('data', function(d) {
-      d.should.equal('TEST');
+      if (d == 'data') {
+        // Also cool.
+        return;
+      }
+      d.should.equal('TEST2');
+    });
+    psc.on('test2', function() {
+      testCalled = true;
     });
     var count = 0;
     psc.on('error', function(err) {
@@ -69,12 +77,17 @@ describe('Complete test suite', function() {
       }
       else {
         err.should.equal(43);
+        testCalled.should.equal(true);
         done();
       }
     });
     // Write a couple of events.
     tc.streams.err.emit('data', '');
-    tc.streams.err.emit('data', 'TEST');
+    tc.streams.err.emit('data', 'TEST2');
+    // Write a reserved word as data event, for coverage.
+    tc.streams.out.emit('data', 'data');
+    // Write a non-reserved word, so we can check it is being emitted.
+    tc.streams.out.emit('data', 'TEST2');
     tc.obj.emit('close', 42);
     tc.obj.emit('error', 43);
   });

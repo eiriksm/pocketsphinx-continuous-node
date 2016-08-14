@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/eiriksm/pocketsphinx-continuous-node#readme",
   "devDependencies": {
-    "coveralls": "^2.11.6",
+    "coveralls": "^2.11.10",
     "eslint": "^3.0.0",
     "istanbul": "^0.4.2",
     "mocha": "^3.0.0",

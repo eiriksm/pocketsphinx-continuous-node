@@ -24,7 +24,7 @@ Since pocketsphinx_continuous is able to use dictionaries as arguments, you can 
 ```js
 var Psc = require('pocketsphinx-continuous');
 var ps = new Psc({
-  setId: '1337'  // A "set id". See explanation below.
+  setId: '1337',  // A "set id". See explanation below.
   verbose: false // Setting this to true will give you a whole lot of debug output in your console.
 });
 ```

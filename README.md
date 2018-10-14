@@ -1,4 +1,6 @@
 # pocketsphinx-continuous
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/eiriksm/pocketsphinx-continuous-node.svg)](https://greenkeeper.io/)
 A node wrapper around pocketsphinx_continuous
 
 [![Build Status](https://travis-ci.org/eiriksm/pocketsphinx-continuous-node.svg?branch=master)](https://travis-ci.org/eiriksm/pocketsphinx-continuous-node)
